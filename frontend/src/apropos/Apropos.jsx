@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import './Apropos.css';
-import photo from '../assets/menu.jpg'; // Assure-toi que le chemin est correct
+import photo from '../assets/les eaux.png'; // Assure-toi que le chemin est correct
+import orga from '../assets/Organigramme.png';
 
 function Apropos() {
     return (
@@ -40,21 +41,7 @@ function Apropos() {
                 <Col>
                     <h2 className="apropos-subtitle">Notre Équipe Médicale</h2>
                     <Row className="justify-content-center">
-                        {[
-                            { nom: "Dr. Jean Dupont", role: "Médecin Généraliste" },
-                            { nom: "Dr. Marie Curie", role: "Chirurgienne" },
-                            { nom: "Dr. Paul Martin", role: "Pédiatre" }
-                        ].map((member, index) => (
-                            <Col md={4} className="mb-3" key={index}>
-                                <Card className="team-card">
-                                    <Card.Img variant="top" src={photo} className="team-img" />
-                                    <Card.Body>
-                                        <Card.Title className="team-name">{member.nom}</Card.Title>
-                                        <Card.Text className="team-role">{member.role}</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
+                        <img src={orga} alt="" />
                     </Row>
                 </Col>
             </Row>
