@@ -1,7 +1,7 @@
 // App.js
 import React, { useState } from 'react';
 import ServiceCRUD from './ajoutService.jsx';
-import ExamenCRUD from './AjoutExamen.jsx';
+import ExamenCRUD from './ajoutExamen.jsx';
 import CarrouselCRUD from './AjoutCaroussel.jsx';
 import Inscription from './inscription.jsx';
 import Discussion from './ajoutDiscussion.jsx';
