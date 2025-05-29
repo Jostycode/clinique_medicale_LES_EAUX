@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import './Apropos.css';
+import './apropos.css';
 import photo from '../assets/les eaux.png'; // Assure-toi que le chemin est correct
 import orga from '../assets/Organigramme.png';
 
