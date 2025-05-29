@@ -344,7 +344,7 @@ app.post("/api/connexion", (req, res) => {
 // ================================
 //       Lancer le serveur
 // ================================
-const PORT = process.env.PORT || 8000;
-server.listen(8000, () => {
-    console.log("Serveur démarré sur le port 8000 avec socket.io");
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log(`Serveur démarré sur le port ${port} avec socket.io`);
 });
