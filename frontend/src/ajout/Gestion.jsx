@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import ServiceCRUD from './ajoutService.jsx';
 import ExamenCRUD from './ajoutExamen.jsx';
-import CarrouselCRUD from './AjoutCaroussel.jsx';
-import Inscription from './inscription.jsx';
+import CarrouselCRUD from './ajoutCaroussel.jsx';
+import Inscription from './Inscription.jsx';
 import Discussion from './ajoutDiscussion.jsx';
 import 'animate.css';
 import '../index1.css';
