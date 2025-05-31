@@ -353,6 +353,6 @@ app.post("/api/connexion", (req, res) => {
 //       Lancer le serveur
 // ================================
 const port = process.env.PORT || 8000;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Serveur démarré sur le port ${port} avec socket.io`);
 });
