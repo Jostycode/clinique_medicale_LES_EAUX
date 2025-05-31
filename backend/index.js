@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
 const http = require('http');
+require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);  // ⬅️  Important
