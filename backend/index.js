@@ -36,7 +36,14 @@ const db = mysql.createPool({
     database: process.env.DB_NAME,
     port: process.env.DB_PORT || 3306
 });
-
+db.getConnection((err, connection) => {
+    if (err) {
+        console.error("❌ Erreur de connexion à la base de données :", err.message);
+    } else {
+        console.log("✅ Connexion réussie à la base de données !");
+        connection.release(); // Libère la connexion
+    }
+});
 // Connexion Socket.io
 io.on('connection', (socket) => {
     console.log('Un client est connecté');
