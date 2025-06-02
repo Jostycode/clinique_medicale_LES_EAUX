@@ -16,7 +16,7 @@ function Inscription() {
     // Charger les discussions
     const loadData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/api/inscription`);
+            const response = await axios.get(`https://cliniqueleseaux.onrender.com/api/inscription`);
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);
@@ -48,9 +48,9 @@ function Inscription() {
 
         try {
             if (editId) {
-                await axios.put(`http://localhost:8000/api/inscription/${editId}`, formData);
+                await axios.put(`https://cliniqueleseaux.onrender.com/api/inscription/${editId}`, formData);
             } else {
-                await axios.post(`http://localhost:8000/api/inscription/post`, formData);
+                await axios.post(`https://cliniqueleseaux.onrender.com/api/inscription/post`, formData);
             }
             setNom("");
             setPoste("");
@@ -66,7 +66,7 @@ function Inscription() {
     const handleDelete = async (id) => {
         if (window.confirm("Voulez-vous vraiment supprimer ce commentaire ?")) {
             try {
-                await axios.delete(`http://localhost:8000/api/inscription/${id}`);
+                await axios.delete(`https://cliniqueleseaux.onrender.com/api/inscription/${id}`);
                 loadData();
             } catch (error) {
                 console.error("Erreur lors de la suppression", error);

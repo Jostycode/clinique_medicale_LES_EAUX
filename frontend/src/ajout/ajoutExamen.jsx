@@ -13,7 +13,7 @@ function ExamenCRUD() {
     // Charger les examens
     const loadData = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/examen");
+            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/examen");
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);

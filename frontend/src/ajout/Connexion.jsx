@@ -10,10 +10,12 @@ function Connexion() {
     const [error, setError] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8000/api/connexion", { poste, mdp });
+            const response = await axios.post("https://cliniqueleseaux.onrender.com/api/connexion", { poste, mdp });
             if (response.data.success) {
                 setIsConnected(true);
             } else {

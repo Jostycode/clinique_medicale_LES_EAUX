@@ -12,7 +12,7 @@ function Discussion() {
 
     const loadData = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/discussion");
+            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/discussion");
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);

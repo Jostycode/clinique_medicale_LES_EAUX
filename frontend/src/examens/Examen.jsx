@@ -10,7 +10,7 @@ function Examen({ setActivePage }) {
     // Charger les examens depuis l'API
     const loadData = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/examen");
+            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/examen");
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);
@@ -46,8 +46,8 @@ function Examen({ setActivePage }) {
                                     <div className="col-12">
                                         <div className="feature-icon mb-4">
                                             <div className="">
-                                                <a href={`http://localhost:8000${examen.image}`} target="_blank" rel="noopener noreferrer">
-                                                    <img src={`http://localhost:8000${examen.image}`} className="p-1 d-inline-flex bg-white rounded taille" alt={examen.titre} />
+                                                <a href={`https://cliniqueleseaux.onrender.com${examen.image}`} target="_blank" rel="noopener noreferrer">
+                                                    <img src={`https://cliniqueleseaux.onrender.com${examen.image}`} className="p-1 d-inline-flex bg-white rounded taille" alt={examen.titre} />
                                                 </a>
                                             </div>
                                         </div>

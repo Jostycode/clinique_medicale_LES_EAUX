@@ -13,7 +13,7 @@ function ServiceCRUD() {
     // Charger les services
     const loadData = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/service");
+            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/service");
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);
