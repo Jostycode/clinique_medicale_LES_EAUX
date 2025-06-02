@@ -221,4 +221,31 @@
   textarea, input {
     font-size: 1rem;
   }
+  .contact-form {
+    margin: 0 1rem !important;
+  }
+
+  .contact-form .row.g-3 {
+    flex-direction: column;
+  }
+
+  .contact-form .col-lg-12,
+  .contact-form .col-xl-6,
+  .contact-form .col-12 {
+    width: 100%;
+  }
+
+  .contact-form .btn {
+    width: 100% !important;
+    font-size: 1rem;
+  }
+
+  .frm {
+    width: 100% !important;
+    margin-top: 2rem;
+  }
+
+  .frm iframe {
+    height: 300px !important;
+  }
 }
