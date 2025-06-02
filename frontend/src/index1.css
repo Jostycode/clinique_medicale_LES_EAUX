@@ -222,7 +222,7 @@
     font-size: 1rem;
   }
   .contact-form {
-    margin: 0 1rem !important;
+    /* margin: 0 1rem !important; */
   }
 
   .contact-form .row.g-3 {
