@@ -104,7 +104,7 @@ function ServiceCRUD() {
                             {data.map((service) => (
                                 <li key={service.id} className="d-flex justify-content-start m1">
                                     <div className="c2">
-                                        <img src={`http://localhost:8000${service.image}`} alt={service.titre} width="100" className="mb-2" />
+                                        <img src={`https://cliniqueleseauxbackend.onrender.com${service.image}`} alt={service.titre} width="100" className="mb-2" />
                                         <strong>Titre :</strong> {service.titre} <br />
                                         <strong>Paragraphe :</strong> {service.paragraphe} <br /><br />
                                         <button onClick={() => handleEdit(service)} className="btn btn-sm btn-warning me-2">Modifier</button>

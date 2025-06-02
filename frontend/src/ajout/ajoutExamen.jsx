@@ -106,7 +106,7 @@ function ExamenCRUD() {
                                 {data.map((examen) => (
                                     <li key={examen.id} className="d-flex justify-content-start m1">
                                         <div className="c2">
-                                            <img src={`http://localhost:8000${examen.image}`} alt={examen.titre} width="100" className="mb-2" />
+                                            <img src={`https://cliniqueleseauxbackend.onrender.com${examen.image}`} alt={examen.titre} width="100" className="mb-2" />
                                             <strong>Titre :</strong> {examen.titre} <br />
                                             <strong>Paragraphe :</strong> {examen.paragraphe} <br /><br />
                                             <button onClick={() => handleEdit(examen)} className="btn btn-sm btn-warning me-2">Modifier</button>

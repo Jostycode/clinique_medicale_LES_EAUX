@@ -101,7 +101,7 @@ function Discussion() {
                 <h3 className="mt-3 d-flex justify-content-center mb-5">Liste des commentaires</h3>
                 {data.map((discussion) => (
                 <li key={discussion.id} className="d-block justify-content-start m1">
-                    <div className="c2" style={discussion.nom !== 'Clinique "LES EAUX"' ? { background: '#13da66', color: 'white' } : {}}>
+                    <div className="c2" style={discussion.nom === 'Clinique "LES EAUX"' ? { background: '#13da66', color: 'white' } : {}}>
                         <strong>{discussion.nom} :</strong><br />{discussion.message}<br /><br />
                     </div>
                 </li>
