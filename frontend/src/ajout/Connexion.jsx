@@ -15,7 +15,7 @@ function Connexion() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://cliniqueleseaux.onrender.com/api/connexion", { poste, mdp });
+            const response = await axios.post("https://cliniqueleseauxbackend.onrender.com/api/connexion", { poste, mdp });
             if (response.data.success) {
                 setIsConnected(true);
             } else {

@@ -9,7 +9,7 @@ function Carrousel() {
 
     const loaddata = async () => {
         try {
-            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/caroussel");
+            const response = await axios.get("https://cliniqueleseauxbackend.onrender.com/api/caroussel");
             console.log(response.data);
             setData(response.data);
         } catch (error) {
@@ -34,7 +34,7 @@ function Carrousel() {
                     <Carousel.Item key={index}>
                         <img
                             className="d-block w-100"
-                            src={`https://cliniqueleseaux.onrender.com${item.image}`} // ou item.image directement si image complète
+                            src={`https://cliniqueleseauxbackend.onrender.com${item.image}`} // ou item.image directement si image complète
                             alt={`Slide ${index}`}
                             style={{ height: '60vh', objectFit: 'cover' }}
                         />

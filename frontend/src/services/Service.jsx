@@ -10,7 +10,7 @@ function Service({ setActivePage }) {
 
     const loaddata = async () => {
         try {
-            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/service");
+            const response = await axios.get("https://cliniqueleseauxbackend.onrender.com/api/service");
             console.log(response.data);
             setData(response.data);
         } catch (error) {
@@ -45,8 +45,8 @@ function Service({ setActivePage }) {
                             <div key={da.id} className="col-md-6 col-lg-4 col-xl-3">
                                 <div className="service-item rounded">
                                     <div className="service-img rounded-top">
-                                        {console.log("Image URL:", `https://cliniqueleseaux.onrender.com${da.image}`)}
-                                        <img src={`https://cliniqueleseaux.onrender.com${da.image}`} className="img-fluid rounded-top w-100" alt={da.titre} />
+                                        {console.log("Image URL:", `https://cliniqueleseauxbackend.onrender.com${da.image}`)}
+                                        <img src={`https://cliniqueleseauxbackend.onrender.com${da.image}`} className="img-fluid rounded-top w-100" alt={da.titre} />
                                     </div>
                                     <div className="service-content rounded-bottom bg-light p-4">
                                         <h5 className="mb-4">{da.titre}</h5>

@@ -13,7 +13,7 @@ function ExamenCRUD() {
     // Charger les examens
     const loadData = async () => {
         try {
-            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/examen");
+            const response = await axios.get("https://cliniqueleseauxbackend.onrender.com/api/examen");
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);
@@ -43,9 +43,9 @@ function ExamenCRUD() {
 
         try {
             if (editId) {
-                await axios.put(`http://localhost:8000/api/examen/${editId}`, formData);
+                await axios.put(`https://cliniqueleseauxbackend.onrender.com/api/examen/${editId}`, formData);
             } else {
-                await axios.post("http://localhost:8000/api/examen/post", formData);
+                await axios.post("https://cliniqueleseauxbackend.onrender.com/api/examen/post", formData);
             }
             setTitre("");
             setParagraphe("");
@@ -61,7 +61,7 @@ function ExamenCRUD() {
     const handleDelete = async (id) => {
         if (window.confirm("Voulez-vous vraiment supprimer cet examen ?")) {
             try {
-                await axios.delete(`http://localhost:8000/api/examen/${id}`);
+                await axios.delete(`https://cliniqueleseauxbackend.onrender.com/api/examen/${id}`);
                 loadData();
             } catch (error) {
                 console.error("Erreur lors de la suppression", error);

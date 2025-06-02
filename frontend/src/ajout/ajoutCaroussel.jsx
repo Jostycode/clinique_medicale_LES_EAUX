@@ -11,7 +11,7 @@ function CarrouselCRUD() {
     // Charger les carrousels
     const loadData = async () => {
         try {
-            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/caroussel");
+            const response = await axios.get("https://cliniqueleseauxbackend.onrender.com/api/caroussel");
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);
@@ -37,9 +37,9 @@ function CarrouselCRUD() {
 
         try {
             if (editId) {
-                await axios.put(`http://localhost:8000/api/caroussel/${editId}`, formData);
+                await axios.put(`/api/caroussel/${editId}`, formData);
             } else {
-                await axios.post("http://localhost:8000/api/caroussel/post", formData);
+                await axios.post("https://cliniqueleseauxbackend.onrender.com/api/caroussel/post", formData);
             }
             setImage(null);
             setEditId(null);
@@ -53,7 +53,7 @@ function CarrouselCRUD() {
     const handleDelete = async (id) => {
         if (window.confirm("Voulez-vous vraiment supprimer ce caroussel ?")) {
             try {
-                await axios.delete(`http://localhost:8000/api/caroussel/${id}`);
+                await axios.delete(`https://cliniqueleseauxbackend.onrender.com/api/caroussel/${id}`);
                 loadData();
             } catch (error) {
                 console.error("Erreur lors de la suppression", error);

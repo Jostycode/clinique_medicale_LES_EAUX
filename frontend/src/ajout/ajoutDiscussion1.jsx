@@ -12,7 +12,7 @@ function Discussion() {
 
     const loadData = async () => {
         try {
-            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/discussion");
+            const response = await axios.get("https://cliniqueleseauxbackend.onrender.com/api/discussion");
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);
@@ -41,9 +41,9 @@ function Discussion() {
 
         try {
             if (editId) {
-                await axios.put(`http://localhost:8000/api/discussion/${editId}`, formData);
+                await axios.put(`https://cliniqueleseauxbackend.onrender.com/api/discussion/${editId}`, formData);
             } else {
-                await axios.post("http://localhost:8000/api/discussion/post", formData);
+                await axios.post("https://cliniqueleseauxbackend.onrender.com/api/discussion/post", formData);
             }
             setNom('Clinique "LES EAUX"');
             setMessage("");
@@ -57,7 +57,7 @@ function Discussion() {
     const handleDelete = async (id) => {
         if (window.confirm("Voulez-vous vraiment supprimer ce commentaire ?")) {
             try {
-                await axios.delete(`http://localhost:8000/api/discussion/${id}`);
+                await axios.delete(`https://cliniqueleseauxbackend.onrender.com/api/discussion/${id}`);
                 loadData();
             } catch (error) {
                 console.error("Erreur lors de la suppression", error);

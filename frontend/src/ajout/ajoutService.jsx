@@ -13,7 +13,7 @@ function ServiceCRUD() {
     // Charger les services
     const loadData = async () => {
         try {
-            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/service");
+            const response = await axios.get("https://cliniqueleseauxbackend.onrender.com/api/service");
             setData(response.data);
         } catch (error) {
             console.error("Erreur de chargement des données", error);
@@ -40,9 +40,9 @@ function ServiceCRUD() {
 
         try {
             if (editId) {
-                await axios.put(`http://localhost:8000/api/service/${editId}`, formData);
+                await axios.put(`https://cliniqueleseauxbackend.onrender.com/api/service/${editId}`, formData);
             } else {
-                await axios.post("http://localhost:8000/api/service/post", formData);
+                await axios.post("https://cliniqueleseauxbackend.onrender.com/api/service/post", formData);
             }
             setTitre("");
             setParagraphe("");
@@ -58,7 +58,7 @@ function ServiceCRUD() {
     const handleDelete = async (id) => {
         if (window.confirm("Voulez-vous vraiment supprimer ce service ?")) {
             try {
-                await axios.delete(`http://localhost:8000/api/service/${id}`);
+                await axios.delete(`https://cliniqueleseauxbackend.onrender.com/api/service/${id}`);
                 loadData();
             } catch (error) {
                 console.error("Erreur lors de la suppression", error);
