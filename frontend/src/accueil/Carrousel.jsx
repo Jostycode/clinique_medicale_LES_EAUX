@@ -9,7 +9,7 @@ function Carrousel() {
 
     const loaddata = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/caroussel");
+            const response = await axios.get("https://cliniqueleseaux.onrender.com/api/caroussel");
             console.log(response.data);
             setData(response.data);
         } catch (error) {
