@@ -34,7 +34,7 @@ function Carrousel() {
                     <Carousel.Item key={index}>
                         <img
                             className="d-block w-100"
-                            src={`http://localhost:8000${item.image}`} // ou item.image directement si image complète
+                            src={`https://cliniqueleseaux.onrender.com${item.image}`} // ou item.image directement si image complète
                             alt={`Slide ${index}`}
                             style={{ height: '60vh', objectFit: 'cover' }}
                         />
