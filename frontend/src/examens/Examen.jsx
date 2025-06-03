@@ -46,8 +46,8 @@ function Examen({ setActivePage }) {
                                     <div className="col-12">
                                         <div className="feature-icon mb-4">
                                             <div className="">
-                                                <a href={`https://cliniqueleseaux.onrender.com${examen.image}`} target="_blank" rel="noopener noreferrer">
-                                                    <img src={`https://cliniqueleseaux.onrender.com${examen.image}`} className="p-1 d-inline-flex bg-white rounded taille" alt={examen.titre} />
+                                                <a href={`https://cliniqueleseauxbackend.onrender.com${examen.image}`} target="_blank" rel="noopener noreferrer">
+                                                    <img src={`https://cliniqueleseauxbackend.onrender.com${examen.image}`} className="p-1 d-inline-flex bg-white rounded taille" alt={examen.titre} />
                                                 </a>
                                             </div>
                                         </div>
