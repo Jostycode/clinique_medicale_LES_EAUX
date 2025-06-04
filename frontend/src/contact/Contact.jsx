@@ -36,7 +36,7 @@ function Contact() {
     return (
         <div className="row g-4 align-items-center bgdc pb-4 pt-3">
             {/* Formulaire de contact */}
-            <div className="col-lg-5 col-xl-5 contact-form wow fadeInLeft m-5" data-wow-delay="0.1s">
+            <div className="col-lg-5 col-xl-5 contact-form wow fadeInLeft marge" data-wow-delay="0.1s">
                 <form onSubmit={handleSubmit}>
                     <div className="row g-3">
                         <div className="col-lg-12 col-xl-6">

@@ -24,38 +24,40 @@ function ExamenCRUD() {
         loadData();
 
         // Quand un service est modifié/ajouté/supprimé, on recharge
-        socket.on('caroussel_updated', loadData);
+        socket.on('examen_updated', loadData);
 
         // Nettoyage quand le composant est démonté
         return () => {
-            socket.off('caroussel_updated', loadData);}
+            socket.off('examen_updated', loadData);}
     }, []);
 
     // Ajouter ou modifier un examen
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("titre", titre);
-        formData.append("paragraphe", paragraphe);
-        if (image) formData.append("image", image);
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("titre", titre);
+    formData.append("paragraphe", paragraphe);
+    if (image instanceof File) {
+        formData.append("image", image);
+    }
 
-        console.log("Données envoyées :", { titre, paragraphe, image });
-
-        try {
-            if (editId) {
-                await axios.put(`https://cliniqueleseauxbackend.onrender.com/api/examen/${editId}`, formData);
-            } else {
-                await axios.post("https://cliniqueleseauxbackend.onrender.com/api/examen/post", formData);
-            }
-            setTitre("");
-            setParagraphe("");
-            setImage("");
-            setEditId(null);
-            loadData();
-        } catch (error) {
-            console.error("Erreur lors de l'ajout/modification", error);
+    try {
+        if (editId) {
+            await axios.put(`https://cliniqueleseauxbackend.onrender.com/api/examen/${editId}`, formData);
+        } else {
+            if (!image) return alert("Veuillez ajouter une image.");
+            await axios.post("https://cliniqueleseauxbackend.onrender.com/api/examen/post", formData);
         }
-    };
+        setTitre("");
+        setParagraphe("");
+        setImage(null);
+        setEditId(null);
+        loadData();
+    } catch (error) {
+        console.error("Erreur lors de l'ajout/modification", error);
+    }
+};
+
 
     // Supprimer un examen
     const handleDelete = async (id) => {

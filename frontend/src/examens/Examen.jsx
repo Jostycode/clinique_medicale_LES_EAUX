@@ -50,7 +50,7 @@ function Examen({ setActivePage }) {
                                                     <img src={`https://cliniqueleseauxbackend.onrender.com${examen.image}`} className="p-1 d-inline-flex bg-white rounded taille" alt={examen.titre} />
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div><br />
                                         <div className="feature-content d-flex flex-column">
                                             <h5 className="mb-4">{examen.titre}</h5>
                                             <p className="mb-0">{examen.paragraphe}</p><br /><br />
