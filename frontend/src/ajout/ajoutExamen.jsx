@@ -33,31 +33,27 @@ function ExamenCRUD() {
 
     // Ajouter ou modifier un examen
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("titre", titre);
-    formData.append("paragraphe", paragraphe);
-    if (image instanceof File) {
-        formData.append("image", image);
-    }
-
-    try {
-        if (editId) {
-            await axios.put(`https://cliniqueleseauxbackend.onrender.com/api/examen/${editId}`, formData);
-        } else {
-            if (!image) return alert("Veuillez ajouter une image.");
-            await axios.post("https://cliniqueleseauxbackend.onrender.com/api/examen/post", formData);
-        }
-        setTitre("");
-        setParagraphe("");
-        setImage(null);
-        setEditId(null);
-        loadData();
-    } catch (error) {
-        console.error("Erreur lors de l'ajout/modification", error);
-    }
-};
-
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("titre", titre);
+            formData.append("paragraphe", paragraphe);
+            if (image) formData.append("image", image);
+    
+            try {
+                if (editId) {
+                    await axios.put(`https://cliniqueleseauxbackend.onrender.com/api/examen/${editId}`, formData);
+                } else {
+                    await axios.post("https://cliniqueleseauxbackend.onrender.com/api/examen/post", formData);
+                }
+                setTitre("");
+                setParagraphe("");
+                setImage(null);
+                setEditId(null);
+                loadData();
+            } catch (error) {
+                console.error("Erreur lors de l'ajout/modification", error);
+            }
+        };
 
     // Supprimer un examen
     const handleDelete = async (id) => {
