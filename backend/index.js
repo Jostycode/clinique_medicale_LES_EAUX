@@ -107,67 +107,66 @@ app.delete("/api/service/:id", async (req, res) => {
 });
 
 // ================================
-//          EXAMEN
+//            EXAMEN
 // ================================
 
 const storage2 = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "assets/examen/"),
-  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
+    destination: (req, file, cb) => cb(null, "assets/examen/"),
+    filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
 });
 const upload2 = multer({ storage: storage2 });
 
 app.get("/api/examen", async (req, res) => {
-  try {
-    const result = await pool.query("SELECT * FROM examen");
-    res.json(result.rows);
-  } catch (error) {
-    res.status(500).json({ message: "Erreur serveur" });
-  }
+    try {
+        const result = await pool.query("SELECT * FROM examen");
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).json({ message: "Erreur serveur" });
+    }
 });
 
 app.post("/api/examen/post", upload2.single("image"), async (req, res) => {
-  const { titre, paragraphe } = req.body;
-  const image = req.file ? `/assets/examen/${req.file.filename}` : null;
-  if (!titre || !paragraphe || !image) return res.status(400).json({ message: "Tous les champs sont requis" });
+    const { titre, paragraphe } = req.body;
+    const image = req.file ? `/assets/examen/${req.file.filename}` : null;
+    if (!titre || !paragraphe || !image) return res.status(400).json({ message: "Tous les champs sont requis" });
 
-  try {
-    await pool.query("INSERT INTO examen (image, titre, paragraphe) VALUES ($1, $2, $3)", [image, titre, paragraphe]);
-    io.emit("examen_updated");
-    res.status(201).json({ message: "Examen ajouté avec succès" });
-  } catch (error) {
-    res.status(500).json({ message: "Erreur serveur" });
-  }
+    try {
+        await pool.query("INSERT INTO examen (image, titre, paragraphe) VALUES ($1, $2, $3)", [image, titre, paragraphe]);
+        io.emit("examen_updated");
+        res.status(201).json({ message: "examen ajouté avec succès" });
+    } catch (err) {
+        res.status(500).json({ message: "Erreur serveur" });
+    }
 });
 
 app.put("/api/examen/:id", upload2.single("image"), async (req, res) => {
-  const { id } = req.params;
-  const { titre, paragraphe } = req.body;
-  const image = req.file ? `/assets/examen/${req.file.filename}` : null;
+    const { id } = req.params;
+    const { titre, paragraphe } = req.body;
+    const image = req.file ? `/assets/examen/${req.file.filename}` : null;
 
-  try {
-    if (image) {
-      await pool.query("UPDATE examen SET titre = $1, paragraphe = $2, image = $3 WHERE id = $4", [titre, paragraphe, image, id]);
-    } else {
-      await pool.query("UPDATE examen SET titre = $1, paragraphe = $2 WHERE id = $3", [titre, paragraphe, id]);
+    try {
+        if (image) {
+            await pool.query("UPDATE examen SET titre = $1, paragraphe = $2, image = $3 WHERE id = $4", [titre, paragraphe, image, id]);
+        } else {
+            await pool.query("UPDATE examen SET titre = $1, paragraphe = $2 WHERE id = $3", [titre, paragraphe, id]);
+        }
+        io.emit("examen_updated");
+        res.json({ message: "examen mis à jour avec succès" });
+    } catch (err) {
+        res.status(500).json({ message: "Erreur serveur" });
     }
-    io.emit("examen_updated");
-    res.json({ message: "Examen mis à jour avec succès" });
-  } catch (error) {
-    res.status(500).json({ message: "Erreur serveur" });
-  }
 });
 
 app.delete("/api/examen/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    await pool.query("DELETE FROM examen WHERE id = $1", [id]);
-    io.emit("examen_updated");
-    res.json({ message: "Examen supprimé avec succès" });
-  } catch (error) {
-    res.status(500).json({ message: "Erreur serveur" });
-  }
+    const { id } = req.params;
+    try {
+        await pool.query("DELETE FROM examen WHERE id = $1", [id]);
+        io.emit("examen_updated");
+        res.json({ message: "examen supprimé avec succès" });
+    } catch (err) {
+        res.status(500).json({ message: "Erreur serveur" });
+    }
 });
-
 
 // ================================
 //         Caroussel
