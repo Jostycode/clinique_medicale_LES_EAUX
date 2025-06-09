@@ -8,7 +8,7 @@ function Menu() {
             <div className="container-fluid bg-light py-2 px-5 border-bottom">
                 <div className="d-flex justify-content-between align-items-center">
                     {/* Logo à gauche */}
-                    <a href="../assets/logo.png">
+                    <a href="../assets/logo-transparent2.png">
                         <img src={logo} alt="Logo" className="logo" style={{ height: "40px" }} />
                     </a>
                     {/* Lien connexion à droite */}

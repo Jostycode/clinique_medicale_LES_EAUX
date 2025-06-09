@@ -36,7 +36,7 @@ function Carrousel() {
                             className="d-block w-100"
                             src={`https://cliniqueleseauxbackend.onrender.com${item.image}`} // ou item.image directement si image complète
                             alt={`Slide ${index}`}
-                            style={{ height: '60vh', /*objectFit: 'cover'*/ }}
+                            style={{ height: '60vh', objectFit: 'cover' }}
                         />
                         <Carousel.Caption>
                             <p className='carrouseltitle'><strong>Bienvenue à <br />
