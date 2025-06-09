@@ -4,7 +4,7 @@ import Service from './services/Service.jsx';
 import Examen from './examens/Examen.jsx';
 import Apropos from './apropos/Apropos.jsx';
 import App from './App.jsx';
-import logo from "./assets/logo.png";
+import logo from "./assets/logo-transparent2.png";
 import utilisateur from "./assets/utilisateur.png";
 import Discussion from './discussions/Discussion.jsx';
 import 'animate.css';
