@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"; // adapte le chemin si nécessaire
+import logo from "../assets/logo-transparent2.png"; // adapte le chemin si nécessaire
 
 function Menu() {
     return (
