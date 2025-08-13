@@ -1,0 +1,147 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../index1.css';
+import socket from '../socket';
+
+function Discussion() {
+    const [data, setData] = useState([]);
+    const [nom, setNom] = useState('Clinique "LES EAUX"');
+    const [message, setMessage] = useState("");
+    const [editId, setEditId] = useState(null);
+
+    const loadData = async () => {
+        try {
+            const response = await axios.get("https://cliniqueleseauxbackend.onrender.com/api/discussion");
+            setData(response.data);
+        } catch (error) {
+            console.error("Erreur de chargement des données", error);
+        }
+    };
+
+    useEffect(() => {
+        loadData();
+
+        // Quand un service est modifié/ajouté/supprimé, on recharge
+        socket.on('discussion_updated', loadData);
+
+        // Nettoyage quand le composant est démonté
+        return () => {
+            socket.off('discussion_updated', loadData);}
+    }, []);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!nom || !message) {
+            alert("Veuillez remplir tous les champs");
+            return;
+        }
+
+        const formData = { nom, message };
+
+        try {
+            if (editId) {
+                await axios.put(`https://cliniqueleseauxbackend.onrender.com/api/discussion/${editId}`, formData);
+            } else {
+                await axios.post("https://cliniqueleseauxbackend.onrender.com/api/discussion/post", formData);
+            }
+            setNom('Clinique "LES EAUX"');
+            setMessage("");
+            setEditId(null);
+            loadData();
+        } catch (error) {
+            console.error("Erreur lors de l'ajout/modification", error);
+        }
+    };
+
+    const handleDelete = async (id) => {
+        if (window.confirm("Voulez-vous vraiment supprimer ce commentaire ?")) {
+            try {
+                await axios.delete(`https://cliniqueleseauxbackend.onrender.com/api/discussion/${id}`);
+                loadData();
+            } catch (error) {
+                console.error("Erreur lors de la suppression", error);
+            }
+        }
+    };
+
+    const handleEdit = (discussion) => {
+        setNom(discussion.nom);
+        setMessage(discussion.message);
+        setEditId(discussion.id);
+    };
+
+    return (
+        <div className="container mt-5 ab">
+            <h2 className="text-center">Laissez un commentaire</h2>
+            <div className="chat">
+                <div className="card p-4 shadow-sm chat1">
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <label htmlFor="nom" className="form-label">Nom</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="nom"
+                                value={nom}
+                                readOnly // 🔒 le champ est verrouillé pour éviter modification manuelle
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="message" className="form-label">Message</label>
+                            <textarea
+                                className="form-control"
+                                id="message"
+                                rows="3"
+                                placeholder="Votre message"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <button className="btn btn-primary w-50 connecter1" type="submit">
+                            {editId ? "Modifier" : "Envoyer"}
+                        </button>
+                    </form>
+                </div>
+
+                <ul className="list-group chat2">
+                    <h3 className="mt-3 d-flex justify-content-center mb-5">Liste des commentaires</h3>
+                    {data.map((discussion) => (
+                        <li key={discussion.id} className="d-block justify-content-start m1">
+                            <div
+                                className="c2"
+                                style={discussion.nom === 'Clinique "LES EAUX"' ? { background: '#13da66', color: 'white' } : {}}
+                            >
+                                <strong>{discussion.nom} :</strong><br />
+                                {discussion.message}<br /><br />
+                                
+                                
+                                {discussion.nom === 'Clinique "LES EAUX"' && (
+                                    <button
+                                        onClick={() => handleEdit(discussion)}
+                                        className="btn btn-sm btn-warning me-2"
+                                    >
+                                        Modifier
+                                    </button>
+                                )}
+
+                                {/* Si tu veux autoriser la suppression uniquement pour la clinique aussi : */}
+                                {/* {discussion.nom === 'Clinique "LES EAUX"' && (
+                                    <button
+                                        onClick={() => handleDelete(discussion.id)}
+                                        className="btn btn-sm btn-danger"
+                                    >
+                                        Supprimer
+                                    </button>
+                                )} */}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    );
+}
+
+export default Discussion;

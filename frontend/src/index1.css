@@ -1,0 +1,259 @@
+.a{
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* overflow: hidden; */
+}
+
+.background{
+    background-color: #f4f4f4;
+    /* background-image: url('/src/assets/service-3.jpg'); */
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    height: auto;
+    margin: 0%;
+    overflow-x: hidden;
+}
+.marge{
+    margin: 7%;
+}
+.chat{
+    display: inline-flex;
+    width: 100%;
+}
+.chat1{
+    width: 50%;
+    height: 50vh;
+}
+.chat2{
+    background-color: #fff;
+    width: 50%;
+    height: 50vh;
+    padding: 0 2%;
+    overflow-y: scroll;
+}
+.c2 {
+    background-color: #fff;
+    border-radius: 20px;
+    display: inline-block; /* Utilisation de flex pour s'adapter au contenu */
+    align-items: center; /* Centre le texte verticalement */
+    min-width: fit-content; /* Taille minimale en fonction du contenu */
+    max-width: 80%; /* Évite que le message soit trop large */
+    padding: 10px 15px;
+    margin: 2% 4%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    text-align: left;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.taille{
+    width: 35%;
+}
+
+.n{
+    background-image: url("assets/menu.jpg");
+    z-index: 1000;
+    position: relative;
+    width: 100 !important;
+}
+.ntaille {
+    height: 7vh;
+    background-color: rgba(19, 218, 102, 0.5);
+    padding-left: 2%;
+    /* border: 2px solid #fff ; */
+}
+
+.ntaille1 {
+    background-color: rgba(19, 218, 102, 0.4);
+}
+  
+  .title1 {
+    font-size: 1.2rem;
+    color: #13da66;
+  }
+  
+  .title2 {
+    font-size: 1.7rem;
+    color: #f31f1f;
+  }
+.cd{
+    padding-bottom: 5%;
+}
+.bgd{
+    background-image: url(assets/eau.jpg);
+    height: 100vh;
+    padding-top: 10%;
+}
+.bgdc{
+    background-image: url(assets/eau.jpg);
+    margin: auto;
+    overflow-y: hidden;
+}
+/* .frm{
+    margin: 0% 2%;
+} */
+.forms{
+    width: 50%;
+    margin: auto;
+}
+.connecter{
+    margin-left: 38%;
+}
+.connecter1{
+    margin-left: 27%;
+    margin-top: 2%;
+}
+.app{
+    width: 100%;
+    height: auto;
+}
+.carrouseltitle{
+    font-size: 5rem;
+}
+
+.logo{
+    background-image: url('./assets/logo.png');
+}
+.btnc{
+    z-index: 10;
+}
+/* .btnd{
+    z-index: 10;
+} */
+ /* Footer */
+.footer {
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./assets/eau1.jpg");
+    /* background-color: #003366; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Conteneur interne qui englobe .footer-container et .footer-copyright */
+.footer-inner {
+    width: 80%;
+    max-width: 1200px;
+}
+
+/* .footer-container est masqué par défaut */
+.footer-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s, transform 0.3s ease-in-out; /* Ajout de la transition pour l'effet de réduction */
+    background-color: rgba(0, 0, 0, 0.5); /* Ajout d'un fond semi-transparent */
+}
+
+/* Menu */
+.footer-menu {
+    list-style: none;
+}
+
+.footer-menu li {
+    margin-bottom: 0;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.footer-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Adresse */
+.footer-address {
+    text-align: right;
+}
+
+.footer-address p {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+/* Copyright */
+.footer-copyright {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Lors du survol du parent .footer-inner, on modifie la visibilité de .footer-container */
+.footer-inner:hover .footer-container {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(0.9); /* Réduit l'arrière-plan du conteneur */
+    transition: opacity 0.3s ease-in-out, visibility 0s, transform 0.3s ease-in-out;
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .carrouseltitle{
+    font-size: 2rem;
+    }
+  .chat {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .chat1, .chat2 {
+    width: 100%;
+  }
+
+    .marge{
+        margin: 0%;
+    }
+
+  .connecter1 {
+    width: 100% !important;
+    margin: 4%;
+  }
+
+  textarea, input {
+    font-size: 1rem;
+  }
+  /* .contact-form {
+    margin: 0 1rem !important;
+  } */
+
+  .contact-form .row.g-3 {
+    flex-direction: column;
+  }
+
+  .contact-form .col-lg-12,
+  .contact-form .col-xl-6,
+  .contact-form .col-12 {
+    width: 100%;
+  }
+
+  .contact-form .btn {
+    width: 100% !important;
+    font-size: 1rem;
+  }
+
+  .frm {
+    width: 100% !important;
+    margin-top: 2rem;
+  }
+
+  .frm iframe {
+    height: 300px !important;
+  }
+}
